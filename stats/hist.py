@@ -8,9 +8,10 @@ import numpy as np
 from matplotlib import colors
 from matplotlib.ticker import PercentFormatter
 import statistics
+from scipy.stats import expon
 
 # wb_obj = openpyxl.load_workbook('owid-covid-data.xlsx')
-wb_obj = openpyxl.load_workbook('C:/Users/Ryan/Desktop/B374-Code/stats/owid-covid-data.xlsx') 
+wb_obj = openpyxl.load_workbook('C:/Users/preto/Desktop/B374-Code/stats/owid-covid-data.xlsx') 
 
 # Read the active sheet:
 sheet = wb_obj.active
@@ -76,8 +77,12 @@ print("Mean = ", statistics.mean(new_y))
 print("Mean = ", np.mean(new_y))
 print("Variance =", np.var(new_y))
 
+expon_x = np.arange(0, 320000, 0.1)
+
+plt.plot(x, y, label='expon') 
+plt.legend(loc='best')
 plt.xlabel("Range of recorded new daily cases")
 plt.ylabel("Number of cases in interval")
 plt.title('Histogram of new Covid-19 cases recorded in South Sudan')
-plt.legend(legend)
+plt.legend(legend, loc='best')
 plt.show()
