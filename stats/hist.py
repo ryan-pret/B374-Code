@@ -7,9 +7,10 @@ import math
 import numpy as np
 from matplotlib import colors
 from matplotlib.ticker import PercentFormatter
+import statistics
 
 # wb_obj = openpyxl.load_workbook('owid-covid-data.xlsx')
-wb_obj = openpyxl.load_workbook('C:/Users/preto/Desktop/B374-Code/stats/owid-covid-data.xlsx') 
+wb_obj = openpyxl.load_workbook('C:/Users/Ryan/Desktop/B374-Code/stats/owid-covid-data.xlsx') 
 
 # Read the active sheet:
 sheet = wb_obj.active
@@ -26,7 +27,7 @@ for row in rows:
     data = {}
     flag = False
     for title, cell in zip(headers, row):
-        if cell.value == "South Sudan":
+        if cell.value == "United States":
             flag = True
 
         if flag and title == "new_cases":
@@ -70,6 +71,10 @@ fig, axs = plt.subplots(1, 1,
                         tight_layout = True)
  
 axs.hist(new_y, bins = bins)
+
+print("Mean = ", statistics.mean(new_y))
+print("Mean = ", np.mean(new_y))
+print("Variance =", np.var(new_y))
 
 plt.xlabel("Range of recorded new daily cases")
 plt.ylabel("Number of cases in interval")

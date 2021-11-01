@@ -5,7 +5,7 @@ import datetime as dt
 import matplotlib.dates as mdates
 
 # wb_obj = openpyxl.load_workbook('owid-covid-data.xlsx')
-wb_obj = openpyxl.load_workbook('C:/Users/preto/Desktop/B374-Code/stats/owid-covid-data.xlsx') 
+wb_obj = openpyxl.load_workbook('C:/Users/Ryan/Desktop/B374-Code/stats/owid-covid-data.xlsx') 
 
 # Read the active sheet:
 sheet = wb_obj.active
@@ -31,10 +31,6 @@ for row in rows:
         if flag and title == "date":
             data[title] = cell.value
 
-    # for title, cell in zip(headers, row):
-        # print(title, cell.value)
-        # if cell.value == "AFG":
-        #     data[title] = cell.value
     list_dict.append(data)
     # filter(None, data)
 print(list_dict)
@@ -47,10 +43,6 @@ for dic in list_dict:
             dates.append(dic[key])
         if key == 'new_cases':
             y.append(dic[key])
-        # print(key)
-        # print(dic[key])
-    # if dat['date'] != None:
-    #     dates.append(dat['date'])
 
 print(dates)
 print(len(y))
